@@ -79,6 +79,11 @@ namespace SnakeEyesApi.Controllers
         {
             _context.SnakeEyesRolls.Add(snakeEyesRoll);
             await _context.SaveChangesAsync();
+            //SetPlayerBalance(1);
+            //if (snakeEyesRoll.PlayerBalance == 1000)
+            //{
+            //    snakeEyesRoll.PlayerBalance = 1001;
+            //        };
 
             //return CreatedAtAction("GetSnakeEyesRoll", new { id = snakeeyesroll.Id }, snakeeyesroll);
             return CreatedAtAction(nameof(GetSnakeEyesRoll), new { id = snakeEyesRoll.Id }, snakeEyesRoll);
@@ -104,6 +109,11 @@ namespace SnakeEyesApi.Controllers
         {
             return _context.SnakeEyesRolls.Any(e => e.Id == id);
         }
+
+        //private long SetPlayerBalance(long id)
+        //{
+        //    return _context.SnakeEyesRolls.Add PlayerBalance = 1000;
+        //}
     }
 
     internal record NewRecord(object Id);
