@@ -80,7 +80,8 @@ namespace SnakeEyesApi.Controllers
             _context.SnakeEyesRolls.Add(snakeEyesRoll);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSnakeEyesRoll", new { id = snakeEyesRoll.Id }, snakeEyesRoll);
+            //return CreatedAtAction("GetSnakeEyesRoll", new { id = snakeeyesroll.Id }, snakeeyesroll);
+            return CreatedAtAction(nameof(GetSnakeEyesRoll), new { id = snakeEyesRoll.Id }, snakeEyesRoll);
         }
 
         // DELETE: api/SnakeEyesRolls/5
@@ -104,4 +105,6 @@ namespace SnakeEyesApi.Controllers
             return _context.SnakeEyesRolls.Any(e => e.Id == id);
         }
     }
+
+    internal record NewRecord(object Id);
 }
