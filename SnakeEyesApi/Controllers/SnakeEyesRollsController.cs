@@ -78,7 +78,11 @@ namespace SnakeEyesApi.Controllers
         public async Task<ActionResult<SnakeEyesRoll>> PostSnakeEyesRoll(SnakeEyesRoll snakeEyesRoll)
         {
             _context.SnakeEyesRolls.Add(snakeEyesRoll);
-            await _context.SaveChangesAsync();
+            if(snakeEyesRoll.PlayerBalance == 1000)
+            {
+                snakeEyesRoll.PlayerBalance = 1001;
+            }
+                await _context.SaveChangesAsync();
             //SetPlayerBalance(1);
             //if (snakeEyesRoll.PlayerBalance == 1000)
             //{
