@@ -87,20 +87,68 @@ namespace SnakeEyesApi.Controllers
             var stringTask = client.GetStringAsync("https://www.random.org/integers/?num=2&min=1&max=6&col=2&base=10&format=plain");
 
             var msg = await stringTask;
+            string cleaned = msg.Replace("\n", "").Replace("\t", "");
+            char[] numbers = cleaned.ToCharArray();
+            int[] numbersInt = new int[numbers.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbersInt[i] = Convert.ToInt32(numbers[i].ToString());
+            }
+
+            int dice1 = numbersInt[0];
+            int dice2 = numbersInt[1];
+
             //var aStringBuilder = new StringBuilder(msg);
             //aStringBuilder.Remove('1', '2');
             //aStringBuilder.Remove('3', '2');
-            ////msg = aStringBuilder.ToString();
+            //int indexOf1 = msg.IndexOf(@"\");
+            //int indexOf2 = msg.IndexOf("t");
+            //int indexOf3 = msg.IndexOf("n");
+            //msg = msg.Replace(@"\", "");
+            //msg = msg.Replace("t", "");
+            //msg = msg.Replace("n", "");
+            ////msg = msg.Remove(indexOf1, 2);
+            ////msg = msg.Remove(indexOf2, 2);
+            //string parsedMessage = msg.Remove(indexOf3, 1);
+            //msg = aStringBuilder.ToString();
             ////char[] numbersAsChar = msg.ToCharArray();
             ////char[] numbers = numbersAsChar.Trim(@"\");
             ////char[] charsToTrim = { '*', ' ', '\'' };
             ////string[] numbers = msg.Trim(charsToTrim);
+           _context.SnakeEyesRolls.Add(snakeEyesRoll);
 
-            _context.SnakeEyesRolls.Add(snakeEyesRoll);
-            if (snakeEyesRoll.PlayerBalance == 1000)
+            if (dice1 == dice2 && dice1 == 1)
             {
-                snakeEyesRoll.PlayerBalance = 1001;
-                snakeEyesRoll.DiceRoll = msg.ToString();
+                snakeEyesRoll.PlayerBalance = 1030;
+                snakeEyesRoll.DiceRoll = cleaned.ToString();
+                snakeEyesRoll.Dice1 = dice1;
+                snakeEyesRoll.Dice2 = dice2;
+            }
+
+            else if (dice1 == dice2)
+            {
+                snakeEyesRoll.PlayerBalance = 1007;
+                snakeEyesRoll.DiceRoll = cleaned.ToString();
+                snakeEyesRoll.Dice1 = dice1;
+                snakeEyesRoll.Dice2 = dice2;
+            }
+            else if (snakeEyesRoll.PlayerBalance == 1000)
+            {
+                //msg = msg.Replace(@"\", "");
+                //msg = msg.Replace("t", "");
+                //msg = msg.Remove('1', '2');
+                //string parsedMsg = msg.Remove('4', '2');
+                //string parsedMsg = msg.Replace("n", "");
+                //var aStringBuilder = new StringBuilder(msg);
+                //aStringBuilder.Remove('1', '2');
+                //aStringBuilder.Remove('4', '2');
+                //string parsedMsg = aStringBuilder.ToString();
+
+                    snakeEyesRoll.PlayerBalance = 1001;
+                    snakeEyesRoll.DiceRoll = cleaned.ToString();
+
+                    snakeEyesRoll.Dice1 = dice1;
+                    snakeEyesRoll.Dice2 = dice2;
             }
 
 

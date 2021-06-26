@@ -12,6 +12,8 @@ namespace SnakeEyesApi.Models
         public bool Roll { get; set; }
         public string DiceRoll { get; set; }
         public bool IsComplete { get; set; }
+        public int Dice1 { get; set; }
+        public int Dice2 { get; set; }
         public SnakeEyesRoll()
         {
             this.PlayerBalance = 1000;
