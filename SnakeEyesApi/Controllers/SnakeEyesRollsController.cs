@@ -117,9 +117,11 @@ namespace SnakeEyesApi.Controllers
             ////string[] numbers = msg.Trim(charsToTrim);
            _context.SnakeEyesRolls.Add(snakeEyesRoll);
 
+            int stake = snakeEyesRoll.Stake;
+
             if (dice1 == dice2 && dice1 == 1)
             {
-                snakeEyesRoll.PlayerBalance = 1030;
+                snakeEyesRoll.PlayerBalance = 1000 + stake * 30;
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
                 snakeEyesRoll.Dice1 = dice1;
                 snakeEyesRoll.Dice2 = dice2;
@@ -127,7 +129,7 @@ namespace SnakeEyesApi.Controllers
 
             else if (dice1 == dice2)
             {
-                snakeEyesRoll.PlayerBalance = 1007;
+                snakeEyesRoll.PlayerBalance = 1000 + stake *7;
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
                 snakeEyesRoll.Dice1 = dice1;
                 snakeEyesRoll.Dice2 = dice2;
@@ -144,7 +146,7 @@ namespace SnakeEyesApi.Controllers
                 //aStringBuilder.Remove('4', '2');
                 //string parsedMsg = aStringBuilder.ToString();
 
-                    snakeEyesRoll.PlayerBalance = 1001;
+                    snakeEyesRoll.PlayerBalance = 1000 - stake;
                     snakeEyesRoll.DiceRoll = cleaned.ToString();
 
                     snakeEyesRoll.Dice1 = dice1;

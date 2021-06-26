@@ -10,6 +10,7 @@ namespace SnakeEyesApi.Models
         public long Id { get; set; }
         public long PlayerBalance { get; set; }
         public bool Roll { get; set; }
+        public int Stake { get; set; }
         public string DiceRoll { get; set; }
         public bool IsComplete { get; set; }
         public int Dice1 { get; set; }
