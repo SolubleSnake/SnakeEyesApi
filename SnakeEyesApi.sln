@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeEyesApi", "SnakeEyesApi\SnakeEyesApi.csproj", "{5616C5F5-3299-42B3-BA81-A3DC427DDFF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeEyesApi.Tests", "SnakeEyesApi.Tests\SnakeEyesApi.Tests.csproj", "{C8965EEC-0A36-4E0F-94A4-1072DFA66509}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5616C5F5-3299-42B3-BA81-A3DC427DDFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5616C5F5-3299-42B3-BA81-A3DC427DDFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5616C5F5-3299-42B3-BA81-A3DC427DDFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8965EEC-0A36-4E0F-94A4-1072DFA66509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8965EEC-0A36-4E0F-94A4-1072DFA66509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8965EEC-0A36-4E0F-94A4-1072DFA66509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8965EEC-0A36-4E0F-94A4-1072DFA66509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
