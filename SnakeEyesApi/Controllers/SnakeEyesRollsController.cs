@@ -23,10 +23,10 @@ namespace SnakeEyesApi.Controllers
             _context = context;
         }
 
-        public SnakeEyesRollsController()
-        {
+        //public SnakeEyesRollsController()
+        //{
 
-        }
+        //}
 
         // GET: api/SnakeEyesRolls
         [HttpGet]
@@ -179,6 +179,7 @@ namespace SnakeEyesApi.Controllers
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
                 snakeEyesRoll.Dice1 = dice1;
                 snakeEyesRoll.Dice2 = dice2;
+                snakeEyesRoll.Winnings = stake * 30;
             }
 
             else if (IsPair(dice1, dice2))
@@ -187,6 +188,8 @@ namespace SnakeEyesApi.Controllers
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
                 snakeEyesRoll.Dice1 = dice1;
                 snakeEyesRoll.Dice2 = dice2;
+                snakeEyesRoll.Winnings = stake * 7;
+
             }
             else
             {

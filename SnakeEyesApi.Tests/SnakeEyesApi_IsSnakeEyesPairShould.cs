@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xunit;
 using SnakeEyesApi.Controllers;
 
+
 namespace SnakeEyesApi.Tests
 {
     public class SnakeEyesApi_IsSnakeEyesPairShould
@@ -101,7 +102,7 @@ namespace SnakeEyesApi.Tests
         }
 
         [Fact]
-        public void SnakeEyesApi_IsCorrectMessage()
+        public async Task SnakeEyesApi_IsCorrectMessage()
         {
             //var snakeEyesRollsController = new SnakeEyesRollsController();
             string result = SnakeEyesRollsController.GetRandomNumbers().ToString();
