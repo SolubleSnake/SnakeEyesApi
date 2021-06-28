@@ -175,7 +175,7 @@ namespace SnakeEyesApi.Controllers
             //}
             if (IsSnakeEyes(dice1, dice2))
             {
-                snakeEyesRoll.PlayerBalance = 1000 + stake * 30;
+                snakeEyesRoll.PlayerBalance = snakeEyesRoll.PlayerBalance + stake * 30;
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
                 snakeEyesRoll.Dice1 = dice1;
                 snakeEyesRoll.Dice2 = dice2;
@@ -183,7 +183,7 @@ namespace SnakeEyesApi.Controllers
 
             else if (IsPair(dice1, dice2))
             {
-                snakeEyesRoll.PlayerBalance = 1000 + stake * 7;
+                snakeEyesRoll.PlayerBalance = snakeEyesRoll.PlayerBalance + stake * 7;
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
                 snakeEyesRoll.Dice1 = dice1;
                 snakeEyesRoll.Dice2 = dice2;
@@ -200,7 +200,7 @@ namespace SnakeEyesApi.Controllers
                 //aStringBuilder.Remove('4', '2');
                 //string parsedMsg = aStringBuilder.ToString();
 
-                snakeEyesRoll.PlayerBalance = 1000 - stake;
+                snakeEyesRoll.PlayerBalance = snakeEyesRoll.PlayerBalance - stake;
                 snakeEyesRoll.DiceRoll = cleaned.ToString();
 
                 snakeEyesRoll.Dice1 = dice1;
@@ -265,16 +265,24 @@ namespace SnakeEyesApi.Controllers
 
         public static async Task GetRandomNumbers()
         {
-            client.DefaultRequestHeaders.Accept.Clear();
-            //client.DefaultRequestHeaders.Accept.Add(
-            //    new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-            client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
+            //client.DefaultRequestHeaders.Accept.Clear();
+            ////client.DefaultRequestHeaders.Accept.Add(
+            ////    new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+            //client.DefaultRequestHeaders.Add("User-Agent", ".NET Foundation Repository Reporter");
 
-            var stringTask = client.GetStringAsync("https://www.random.org/integers/?num=2&min=1&max=6&col=2&base=10&format=plain");
+            string stringTask = await client.GetStringAsync("https://www.random.org/integers/?num=2&min=1&max=6&col=2&base=10&format=plain");
 
-            var msg = await stringTask;
+            //var msg = await stringTask;
+            //string cleaned = msg.Replace("\n", "").Replace("\t", "");
+            //char[] numbers = cleaned.ToCharArray();
+            //int[] numbersInt = new int[numbers.Length];
+            //for (int i = 0; i < numbers.Length; i++)
+            //{
+            //    numbersInt[i] = Convert.ToInt32(numbers[i].ToString());
+            //}
 
- 
+            //int dice1 = numbersInt[0];
+            //int dice2 = numbersInt[1];
 
 
             //Console.Write(msg);
@@ -294,7 +302,7 @@ namespace SnakeEyesApi.Controllers
 
         public bool IsPair(int dice1, int dice2)
         {
-            if(dice1.Equals(dice2))
+            if(dice1.Equals(dice2) && !dice1.Equals(1))
             {
                 return true;
             }

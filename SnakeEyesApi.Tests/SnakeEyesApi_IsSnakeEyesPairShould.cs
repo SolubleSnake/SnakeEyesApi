@@ -11,22 +11,101 @@ namespace SnakeEyesApi.Tests
     public class SnakeEyesApi_IsSnakeEyesPairShould
     {
 
-        [Fact]
-        public void SnakeEyesApi_IsSnakeEyesPair()
+        [Theory]
+        [InlineData(1, 1)][InlineData(1, 2)]
+        [InlineData(1, 3)]
+        [InlineData(1, 4)]
+        [InlineData(1, 5)]
+        [InlineData(1, 6)]
+        [InlineData(2, 1)]
+        [InlineData(2, 2)]
+        [InlineData(2, 3)]
+        [InlineData(2, 4)]
+        [InlineData(2, 5)]
+        [InlineData(2, 6)]
+        [InlineData(3, 1)]
+        [InlineData(3, 2)]
+        [InlineData(3, 3)]
+        [InlineData(3, 4)]
+        [InlineData(3, 5)]
+        [InlineData(3, 6)]
+        [InlineData(4, 1)]
+        [InlineData(4, 2)]
+        [InlineData(4, 3)]
+        [InlineData(4, 4)]
+        [InlineData(4, 5)]
+        [InlineData(4, 6)]
+        [InlineData(5, 1)]
+        [InlineData(5, 2)]
+        [InlineData(5, 3)]
+        [InlineData(5, 4)]
+        [InlineData(5, 5)]
+        [InlineData(5, 6)]
+        [InlineData(6, 1)]
+        [InlineData(6, 2)]
+        [InlineData(6, 3)]
+        [InlineData(6, 4)]
+        [InlineData(6, 5)]
+        [InlineData(6, 6)]
+        public void SnakeEyesApi_IsSnakeEyesPair(int value1, int value2)
         {
             var snakeEyesRollsController = new SnakeEyesRollsController();
-            bool result = snakeEyesRollsController.IsPair(2, 2);
+            bool result = snakeEyesRollsController.IsPair(value1, value2);
 
-            Assert.True(result, "I am a pair");
+            Assert.True(result, $"{value1}, and {value2} are not a pair");
+        }
+
+        [Theory]
+        [InlineData(1, 1)]
+        [InlineData(1, 2)]
+        [InlineData(1, 3)]
+        [InlineData(1, 4)]
+        [InlineData(1, 5)]
+        [InlineData(1, 6)]
+        [InlineData(2, 1)]
+        [InlineData(2, 2)]
+        [InlineData(2, 3)]
+        [InlineData(2, 4)]
+        [InlineData(2, 5)]
+        [InlineData(2, 6)]
+        [InlineData(3, 1)]
+        [InlineData(3, 2)]
+        [InlineData(3, 3)]
+        [InlineData(3, 4)]
+        [InlineData(3, 5)]
+        [InlineData(3, 6)]
+        [InlineData(4, 1)]
+        [InlineData(4, 2)]
+        [InlineData(4, 3)]
+        [InlineData(4, 4)]
+        [InlineData(4, 5)]
+        [InlineData(4, 6)]
+        [InlineData(5, 1)]
+        [InlineData(5, 2)]
+        [InlineData(5, 3)]
+        [InlineData(5, 4)]
+        [InlineData(5, 5)]
+        [InlineData(5, 6)]
+        [InlineData(6, 1)]
+        [InlineData(6, 2)]
+        [InlineData(6, 3)]
+        [InlineData(6, 4)]
+        [InlineData(6, 5)]
+        [InlineData(6, 6)]
+        public void SnakeEyesApi_IsSnakeEyes(int value1, int value2)
+        {
+            var snakeEyesRollsController = new SnakeEyesRollsController();
+            bool result = snakeEyesRollsController.IsSnakeEyes(value1, value2);
+
+            Assert.True(result, $"{value1} and  {value2} are Snake Eyes");
         }
 
         [Fact]
-        public void SnakeEyesApi_IsSnakeEyes()
+        public void SnakeEyesApi_IsCorrectMessage()
         {
-            var snakeEyesRollsController = new SnakeEyesRollsController();
-            bool result = snakeEyesRollsController.IsSnakeEyes(1, 1);
-
-            Assert.True(result, "I am Snake Eyes");
+            //var snakeEyesRollsController = new SnakeEyesRollsController();
+            string result = SnakeEyesRollsController.GetRandomNumbers().ToString();
+            Assert.Contains("\n", result);
         }
     }
 }
