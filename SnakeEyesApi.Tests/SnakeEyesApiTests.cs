@@ -5,12 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using SnakeEyesApi.Controllers;
-
+using System.Net.Http;
+using SnakeEyesApi;
+using Microsoft.AspNetCore.Mvc.Testing;
+using FluentAssertions;
+using System.Text.Json;
+using System.Net;
+using Newtonsoft.Json;
+using SnakeEyesApi.Models;
 
 namespace SnakeEyesApi.Tests
 {
-    public class SnakeEyesApi_IsSnakeEyesPairShould
+    public class SnakeEyesApiTests : IClassFixture<WebApplicationFactory<SnakeEyesApi.Startup>>
     {
+
+        public HttpClient Client { get; }
+
+        public SnakeEyesApiTests(WebApplicationFactory<SnakeEyesApi.Startup> fixture)
+        {
+            Client = fixture.CreateClient();
+        }
+        [Fact]
+        public async Task Get_Should_Retrieve_Score()
+        {
+            var response = await Client.GetAsync("/snakeeyesapi");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+            var forecast = JsonConvert.DeserializeObject<SnakeEyesRoll[]>(await response.Content.ReadAsStringAsync());
+            forecast.Should().HaveCount(0);
+        }
+
 
         [Theory]
         [InlineData(1, 1)][InlineData(1, 2)]
@@ -101,12 +125,15 @@ namespace SnakeEyesApi.Tests
             Assert.True(result, $"{value1} and  {value2} are Snake Eyes");
         }
 
-        [Fact]
-        public async Task SnakeEyesApi_IsCorrectMessage()
-        {
-            //var snakeEyesRollsController = new SnakeEyesRollsController();
-            string result = SnakeEyesRollsController.GetRandomNumbers().ToString();
-            Assert.Contains("\n", result);
-        }
+        //[Fact]
+        //public async Task SnakeEyesApi_IsCorrectMessage()
+        //{
+        //    //var snakeEyesRollsController = new SnakeEyesRollsController();
+        //    string result = SnakeEyesRollsController.GetRandomNumbers().ToString();
+        //    Assert.Contains("\n", result);
+        //}
+
     }
+
+
 }

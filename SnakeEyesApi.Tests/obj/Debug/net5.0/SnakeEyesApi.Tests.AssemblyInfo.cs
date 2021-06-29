@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("SnakeEyesApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\User\\source\\repos\\SnakeEyesApi\\SnakeEyesApi", "SnakeEyesApi.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("SnakeEyesApi.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
