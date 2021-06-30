@@ -23,10 +23,10 @@ namespace SnakeEyesApi.Controllers
             _context = context;
         }
 
-        public SnakeEyesRollsController()
-        {
+        //public SnakeEyesRollsController()
+        //{
 
-        }
+        //}
 
         // GET: api/SnakeEyesRolls
         [HttpGet]
