@@ -55,16 +55,19 @@ namespace SnakeEyesApi.Tests
 
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
         {
+
+            var response = await Client.GetAsync("/api/SnakeEyesRolls");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
             // Arrange
-            var client = _factory.CreateClient();
+            //var client = _factory.CreateClient();
 
-            // Act
-            var response = await client.GetAsync(url);
+            //// Act
+            //var response = await client.GetAsync(url);
 
-            // Assert
-            response.EnsureSuccessStatusCode(); // Status Code 200-299
-            Assert.Equal("text/html; charset=utf-8",
-                response.Content.Headers.ContentType.ToString());
+            //// Assert
+            //response.EnsureSuccessStatusCode(); // Status Code 200-299
+            //Assert.Equal("text/html; charset=utf-8",
+            //    response.Content.Headers.ContentType.ToString());
         }
         //public class SnakeEyesApiWebApplicationFactory : WebApplicationFactory<SnakeEyesApi.Startup>
         //{
